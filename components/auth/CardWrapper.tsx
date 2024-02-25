@@ -4,6 +4,7 @@ import { Children } from "react";
 import { Card, CardContent, CardHeader, CardFooter } from "../ui/card";
 import { Header } from "./Header";
 import { Social } from "./Social";
+import Link from "next/link";
 
 interface CardWrapperProps {
   children: React.ReactNode;
@@ -20,11 +21,14 @@ export function CardWrapper(props: CardWrapperProps) {
         <Header label={props.headerLabel} />
       </CardHeader>
       <CardContent>{props.children}</CardContent>
-      {props.showSocial  && (
+      {props.showSocial && (
         <CardFooter>
-          <Social/>
+          <Social />
         </CardFooter>
       )}
+      <CardFooter className="flex justify-center text-sm font-semibold">
+        <Link href={props.backButtonHref}>{props.backButtonLabel}</Link>
+      </CardFooter>
     </Card>
   );
 }
